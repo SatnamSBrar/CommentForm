@@ -4,7 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Comments</h2>
+
+<div class="row">
+    <a href="#" class="btn btn-info" role="button">@Html.ActionLink("Create New", "Create")</a>
+    @*@Html.ActionLink("Create New", "Create")*@
+</div>
 
 <div class="row">
     @foreach (var item in Model)
@@ -14,14 +19,18 @@
                 <div class="caption">
                     <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
                     <p>@Html.DisplayFor(modelItem => item.Comment)</p>
-                    <p><span class="label label-default">Priority: </span>&nbsp;&nbsp;<strong>@Html.DisplayFor(modelItem => item.Priority)</strong></p>
-                    <p><a href="#" class="btn btn-info" role="button">Details</a></p>
+                    <p><span class="label label-default">@Html.DisplayNameFor(model => model.Priority)</span>&nbsp;&nbsp;<strong>@Html.DisplayFor(modelItem => item.Priority)</strong></p>
+                    <p> @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-info", role = "button" }) 
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-info", role = "button" }) 
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-info", role = "button" })
+                    </p>
                 </div>
             </div>
         </div>
     }
 </div>
 
+@*Code for table design commented out below*@
 @*<p>
         @Html.ActionLink("Create New", "Create")
     </p>
